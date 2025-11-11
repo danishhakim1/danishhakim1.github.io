@@ -5,6 +5,8 @@
   background: radial-gradient(circle at 50% -10%, rgba(100, 100, 100, 0.08), transparent 55%),
     radial-gradient(circle at 8% 18%, rgba(120, 120, 120, 0.06), transparent 58%),
     var(--paper-50);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .newspaper-background {
@@ -68,6 +70,10 @@
 .content {
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .nav {
@@ -247,8 +253,11 @@
 }
 
 .section-inner {
-  max-width: 1120px;
+  max-width: min(1120px, 100%);
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .eyebrow {
@@ -294,6 +303,20 @@
   margin-top: 1.8rem;
 }
 
+@media (max-width: 768px) {
+  .awards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .awards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
 .award-card {
   position: relative;
   padding: 1.6rem;
@@ -303,6 +326,11 @@
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 24px 48px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .award-card::before {
@@ -396,6 +424,8 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   margin-top: 2rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @media (max-width: 1200px) {
@@ -406,13 +436,46 @@
 
 @media (max-width: 768px) {
   .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
 
 @media (max-width: 480px) {
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .project-card {
+    padding: 1rem;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .project-image-wrapper {
+    margin: -1rem -1rem 0.8rem;
+    width: calc(100% + 2rem);
+    box-sizing: border-box;
+  }
+
+  .project-image-wrapper img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .awards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .award-card {
+    padding: 1.2rem;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 }
 
@@ -427,6 +490,11 @@
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 16px 32px rgba(0, 0, 0, 0.12);
   opacity: 1 !important;
   visibility: visible !important;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .project-card::before {
@@ -472,8 +540,10 @@
 
 .project-image-wrapper img {
   width: 100%;
+  height: auto;
   display: block;
   filter: grayscale(100%) contrast(1.05);
+  object-fit: cover;
 }
 
 .project-meta {
@@ -751,6 +821,12 @@
 
   .section {
     padding-inline: clamp(1.6rem, 8vw, 3.2rem);
+    padding-top: clamp(3rem, 8vw, 6rem);
+    padding-bottom: clamp(3rem, 8vw, 6rem);
+  }
+
+  .awards-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -778,8 +854,92 @@
     text-align: center;
   }
 
+  .section {
+    padding-inline: clamp(1rem, 4vw, 1.6rem);
+  }
+
+  .section-inner {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .project-card {
+    padding: 1rem;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .project-image-wrapper {
+    margin: -1rem -1rem 0.8rem;
+    width: calc(100% + 2rem);
+    box-sizing: border-box;
+  }
+
+  .project-image-wrapper img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .project-title {
+    font-size: 1.1rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .project-description {
+    font-size: 0.8rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .awards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .award-card {
+    padding: 1.2rem;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .award-title {
+    font-size: 1.2rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .award-detail {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .toolset-tags {
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .project-tools {
+    gap: 0.5rem;
+  }
+
+  .toolset-label {
+    font-size: 0.6rem;
   }
 
   .timeline::before {

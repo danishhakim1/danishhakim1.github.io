@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 // 1. Put your portrait photo in src/assets/ and name it (e.g., 'portrait.jpg' or 'my-photo.png')
 // 2. Put project images in src/assets/ and name them (e.g., 'project1.jpg')
 // 3. Update the import paths below to match your filenames
-import heroPortrait from './assets/mainpicture.jpg'
+import heroPortrait from './assets/mainpicture.png'
 import newspaperBackground from './assets/grunge_old_newspaper_limited.jpg'
 import phishnetImage from './assets/phishnet.png'
 import mindtapImage from './assets/MindTap.png'
