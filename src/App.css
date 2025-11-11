@@ -250,6 +250,10 @@
   padding: clamp(4.2rem, 9vw, 7.2rem) clamp(2rem, 6vw, 5rem);
   border-bottom: 1px solid rgba(60, 60, 60, 0.14);
   background: rgba(240, 240, 238, 0.35);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .section-inner {
@@ -438,6 +442,33 @@
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+
+  .project-card {
+    padding: 1rem;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .project-image-wrapper {
+    margin: -1rem -1rem 0.8rem -1rem;
+    width: calc(100% + 2rem);
+    max-width: calc(100% + 2rem);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .project-image-wrapper img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
   }
 }
 
@@ -445,25 +476,34 @@
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    width: 100%;
   }
 
   .project-card {
-    padding: 1rem;
+    padding: 0.8rem;
     min-width: 0;
     max-width: 100%;
+    width: 100%;
     overflow: hidden;
     box-sizing: border-box;
   }
 
   .project-image-wrapper {
-    margin: -1rem -1rem 0.8rem;
-    width: calc(100% + 2rem);
+    margin: -0.8rem -0.8rem 0.8rem -0.8rem;
+    width: calc(100% + 1.6rem);
+    max-width: calc(100% + 1.6rem);
     box-sizing: border-box;
+    overflow: hidden;
   }
 
   .project-image-wrapper img {
     max-width: 100%;
+    width: 100%;
     height: auto;
+    display: block;
   }
 
   .awards-grid {
@@ -536,10 +576,13 @@
   background: rgba(0, 0, 0, 0.05);
   position: relative;
   z-index: 2;
+  max-width: calc(100% + 2.4rem);
+  box-sizing: border-box;
 }
 
 .project-image-wrapper img {
   width: 100%;
+  max-width: 100%;
   height: auto;
   display: block;
   filter: grayscale(100%) contrast(1.05);
@@ -855,37 +898,48 @@
   }
 
   .section {
-    padding-inline: clamp(1rem, 4vw, 1.6rem);
+    padding-inline: clamp(0.8rem, 3vw, 1.2rem);
+    padding-top: clamp(2.5rem, 6vw, 4rem);
+    padding-bottom: clamp(2.5rem, 6vw, 4rem);
   }
 
   .section-inner {
     width: 100%;
     max-width: 100%;
+    padding: 0;
   }
 
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
     width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
   }
 
   .project-card {
-    padding: 1rem;
+    padding: 0.8rem;
     min-width: 0;
     max-width: 100%;
+    width: 100%;
     overflow: hidden;
     box-sizing: border-box;
   }
 
   .project-image-wrapper {
-    margin: -1rem -1rem 0.8rem;
-    width: calc(100% + 2rem);
+    margin: -0.8rem -0.8rem 0.8rem -0.8rem;
+    width: calc(100% + 1.6rem);
+    max-width: calc(100% + 1.6rem);
     box-sizing: border-box;
+    overflow: hidden;
   }
 
   .project-image-wrapper img {
     max-width: 100%;
+    width: 100%;
     height: auto;
+    display: block;
   }
 
   .project-title {
