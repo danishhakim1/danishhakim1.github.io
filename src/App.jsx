@@ -539,7 +539,7 @@ function App() {
                 </a>
                 <a
                   className="btn btn-outline"
-                  href="/Danish_Resume (2).pdf"
+                  href="/Danish_Resume (4).pdf"
                   download
                 >
                   Download Resume
