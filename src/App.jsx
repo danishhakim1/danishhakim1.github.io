@@ -163,7 +163,13 @@ const highlights = [
 
 const experienceTimeline = [
   {
-    period: 'May 2025 — Present',
+    period: 'Dec 2025 — Present',
+    title: 'Software Engineering Intern · Telus Health',
+    summary:
+      'Developing AI solutions for home health monitoring.',
+  },
+  {
+    period: 'May 2025 — Dec 2025',
     title: 'AI and Data Engineering Intern· TELUS AI Accelerator',
     summary:
       'Developing MBRL pipelines and data integrations on GCP to optimize energy use, projected to save $450K and cut usage by 20%.',
