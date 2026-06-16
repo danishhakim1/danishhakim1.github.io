@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Human head -->
+  <path
+    d="M256 176C300.2 176 336 140.2 336 96C336 51.8 300.2 16 256 16C211.8 16 176 51.8 176 96C176 140.2 211.8 176 256 176Z"
+    stroke="#f6d27a"
+    stroke-width="22"
+  />
+  <!-- Human body -->
+  <path
+    d="M144 496C144 402.7 186.5 336 256 336C325.5 336 368 402.7 368 496"
+    stroke="#f6d27a"
+    stroke-width="22"
+    stroke-linecap="round"
+  />
+
+  <!-- AI circuit -->
+  <path
+    d="M386 164C420 164 448 192 448 226C448 260 420 288 386 288C352 288 324 260 324 226C324 192 352 164 386 164Z"
+    stroke="#f6d27a"
+    stroke-width="18"
+  />
+  <path
+    d="M386 288V324"
+    stroke="#f6d27a"
+    stroke-width="18"
+    stroke-linecap="round"
+  />
+  <path
+    d="M386 324L344 352"
+    stroke="#f6d27a"
+    stroke-width="18"
+    stroke-linecap="round"
+  />
+  <path
+    d="M344 352H288"
+    stroke="#f6d27a"
+    stroke-width="18"
+    stroke-linecap="round"
+  />
+  <path
+    d="M288 352L260 318"
+    stroke="#f6d27a"
+    stroke-width="18"
+    stroke-linecap="round"
+  />
+  <path
+    d="M260 318V272"
+    stroke="#f6d27a"
+    stroke-width="18"
+    stroke-linecap="round"
+  />
+</svg>
+

@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 // To replace images: 
 // 1. Put your portrait photo in src/assets/ and name it (e.g., 'portrait.jpg' or 'my-photo.png')
 // 2. Put project images in src/assets/ and name them (e.g., 'project1.jpg')
 // 3. Update the import paths below to match your filenames
 import heroPortrait from './assets/mainpicture.png'
-import newspaperBackground from './assets/grunge_old_newspaper_limited.jpg'
 import phishnetImage from './assets/phishnet.png'
 import mindtapImage from './assets/MindTap.png'
 import simonCoxImage from './assets/SimonCox.png'
@@ -14,10 +13,15 @@ import stromaImage from './assets/Stroma.JPG'
 import acsPosterImage from './assets/ACSPoster.jpg'
 import acsTalkImage from './assets/ACSTalk.JPG'
 import geneImage from './assets/Gene.png'
-import forumAtlasImage from './assets/project-forum.svg'
-import marbleArchiveImage from './assets/project-marble.svg'
-import echoBasilicaImage from './assets/project-echo.svg'
+import portraitPlaceholder from './assets/portrait-placeholder.svg'
+import reactSvg from './assets/react.svg'
+import steadyScriptImage from './assets/steadyscript.png'
+import hci2026PaperImage from './assets/hci2026-paper.png'
+import therassistImage from './assets/therassist.png'
 import './App.css'
+
+// Ensure ESLint counts the `motion` import as used (it appears in JSX).
+void motion
 
 const Typewriter = ({ texts, typingSpeed = 50, deletingSpeed = 30, pauseTime = 2000 }) => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0)
@@ -70,16 +74,73 @@ const Typewriter = ({ texts, typingSpeed = 50, deletingSpeed = 30, pauseTime = 2
 }
 
 const projects = [
+
+  
+  {
+    title: 'NwHacks 2026 Winner: SteadyScript',
+    description:
+      'Real-time tremor analysis from webcam input with live visual feedback for motor control assessment.',
+    detailedDescription:
+      'SteadyScript is a real-time tremor analysis system that tracks fine-grained hand motion from webcam input and quantifies involuntary jitter during drawing tasks. It provides live visual feedback to support motor control assessment and progress tracking.',
+    toolsets: [
+      { label: 'Frontend', items: ['React', 'TypeScript', 'Vite'] },
+      { label: 'Computer Vision', items: ['OpenCV', 'Python'] },
+    ],
+    image: steadyScriptImage,
+    images: [
+      { src: steadyScriptImage, caption: null },
+    ],
+    imageAlt: 'SteadyScript real-time tremor analysis interface',
+    githubLink: 'https://github.com/SteadyScript/SteadyScript',
+    demoLink: 'https://devpost.com/software/steadyscript',
+    year: '2026',
+  },
+  {
+    title: 'Therassist',
+    description:
+      'Multimodal therapy screening using facial emotion + speech analysis to generate structured summaries.',
+    detailedDescription:
+      'Therassist is a multimodal therapy screening platform that analyzes facial emotion and speech from live sessions. It generates structured ML-driven summaries to support therapist workflows and improve session efficiency.',
+    toolsets: [
+      { label: 'Backend', items: ['Python', 'FastAPI'] },
+      { label: 'Speech & Vision', items: ['Whisper', 'OpenCV', 'TensorFlow'] },
+    ],
+    image: therassistImage,
+    images: [
+      { src: therassistImage, caption: 'Therassist multimodal therapy screening concept' },
+    ],
+    imageAlt: 'Therassist multimodal therapy screening workflow',
+    githubLink: 'https://github.com/Therassist-AI/Therassist',
+    demoLink: null,
+    year: '2026',
+  },
+
+  {
+    title: 'From Principles to Practice: Translating Human-AI Interaction Research into Effective Human-Centred AI Product Design',
+    description:
+      'Accepted into the International Conference on Human-Computer Interaction: a research paper on translating human-AI interaction research into effective human-centred AI product design.',
+    detailedDescription:
+      'This research paper explores the translation of human-AI interaction principles into effective human-centred AI product design. It provides a framework for understanding and applying human-AI interaction research to create more user-friendly and effective AI products. Accepted into the International Conference on Human-Computer Interaction (HCI). Click to open the final paper PDF.',
+    toolsets: [
+      { label: 'Research', items: ['Human-AI Interaction', 'Product Design', 'User Experience'] },
+    ],
+    image: hci2026PaperImage,
+    images: [{ src: hci2026PaperImage, caption: null }],
+    imageAlt: 'From Principles to Practice: Translating Human-AI Interaction Research into Effective Human-Centred AI Product Design',
+    demoLink: '/HCI_2026_Final_Paper.pdf',
+    metaLabel: 'Publication',
+    year: '2026',
+  },
+
   {
     title: 'PhishNet.AI',
     description:
-      'A machine learning web application designed to detect and classify phishing attempts in real-time, with an interactive learning mode to help users improve their security awareness.',
+      'Production-style phishing detection API that classifies malicious emails with real-time inference.',
     detailedDescription:
       'PhishNet.AI is an intelligent phishing detection system that analyzes email, Google Chat, Slack, or other text content to identify malicious patterns. The application features real-time phishing prediction using a pre-trained SVC model and TF-IDF vectorizer, providing users with immediate feedback through a modern web interface. Beyond detection, it includes an interactive learning mode where users can practice identifying phishing emails and receive feedback comparing their guesses to the model\'s predictions. The system uses a robust Flask-RESTX backend with Swagger UI documentation, automated email preprocessing, and handles class imbalance using RandomUnderSampler.',
     toolsets: [
-      { label: 'Backend', items: ['Python', 'Flask', 'Flask-RESTX', 'Scikit-learn', 'NLTK'] },
-      { label: 'Frontend', items: ['HTML5', 'CSS3', 'JavaScript'] },
-      { label: 'ML', items: ['SVC Model', 'TF-IDF Vectorizer', 'Pandas', 'Joblib'] },
+      { label: 'Backend', items: ['Python', 'Flask', 'Flask-RESTX'] },
+      { label: 'ML', items: ['Scikit-learn', 'SVC', 'TF-IDF'] },
     ],
     image: phishnetImage,
     images: [{ src: phishnetImage, caption: null }],
@@ -88,6 +149,7 @@ const projects = [
     demoLink: 'https://www.youtube.com/watch?v=rXw9ejR7Rac',
     year: '2025',
   },
+
   {
     title: 'MindTap',
     description:
@@ -108,8 +170,9 @@ const projects = [
     imageAlt: 'MindTap EEG-based assistive headset for iOS control',
     githubLink: 'https://github.com/danishhakim1/MINT',
     demoLink: 'https://www.youtube.com/watch?v=thVtysaQnYg',
-    year: '2024',
+    year: '2025',
   },
+
   {
     title: 'Artificial Cornea Project',
     description:
@@ -132,6 +195,7 @@ const projects = [
     demoLink: null,
     year: '2025',
   },
+ 
   {
     title: 'Integrative Genomic and Clinical Analysis',
     description:
@@ -144,10 +208,7 @@ const projects = [
       { label: 'Skills', items: ['Bioinformatics', 'Statistical Data Analysis', 'Computational Biology'] },
     ],
     image: geneImage,
-    images: [{ 
-      src: geneImage, 
-      caption: null 
-    }],
+    images: [{ src: geneImage, caption: null }],
     imageAlt: 'Genomic data visualization and bioinformatics analysis',
     githubLink: null,
     demoLink: '/LUSC Data Analysis (2).pdf',
@@ -155,78 +216,67 @@ const projects = [
   },
 ]
 
-const highlights = [
-  { label: 'Years crafting web', value: '4+' },
-  { label: 'Interfaces unearthed', value: '18' },
-  { label: 'Currently', value: 'Freelance Frontend Lead' },
-]
-
 const experienceTimeline = [
   {
-    period: 'Dec 2025 — Present',
-    title: 'Software Engineering Intern · Telus Health',
+    period: 'Jan 2026 — Present',
+    title: 'Software Engineering Intern · TELUS Health',
     summary:
-      'Developing AI solutions for home health monitoring.',
+      'Owning the end-to-end development of an automated AI Phone Assistant using Twilio Voice webhooks, reducing required manual customer service calls by 80% through automated patient engagement and response triaging; built a serverless event-driven backend (AWS Lambda + DynamoDB) to ingest call events, process speech responses, and store structured longitudinal interaction data across 1,000+ patient interactions; building a Predictive Analytics Tool to surface early health risk signals and generate alerts to support proactive clinician intervention.',
   },
   {
     period: 'May 2025 — Dec 2025',
-    title: 'AI and Data Engineering Intern· TELUS AI Accelerator',
+    title: 'Software and ML Engineering Intern · TELUS AI Accelerator',
     summary:
-      'Developing MBRL pipelines and data integrations on GCP to optimize energy use, projected to save $450K and cut usage by 20%.',
+      'Architecting a production-grade Model-Based Reinforcement Learning system modeling building thermodynamics as a Markov Decision Process, projected to reduce HVAC energy consumption by 20% per site and save $450K across 1.4 years; replacing legacy PHP/shell tooling with a Python microservice for asynchronous SNMP device control and secure remote execution (reducing downtime by 30%); building geospatial analytics workflows with SQL + BigQuery to support retail and network planning decisions.',
   },
   {
-    period: ' Sept 2024 — April 2025',
-    title: 'FP&A Analyst · Fennec.AI',
+    period: 'Sep 2024 — Apr 2025',
+    title: 'Data Analyst - FP&A (Part-time) · Fennec.AI',
     summary:
-      'Built financial and revenue models for investor decks, helping secure a $300K pre-seed raise at a $10M valuation.',
+      'Building Python financial forecasting models supporting a $300K pre-seed raise at a $10M valuation; automating KPI tracking workflows with SQL + MS Excel, reducing manual reporting effort by 70%; translating product constraints into scenario-driven revenue projections improving forecast accuracy by 25%.',
   },
   {
-    period: ' May 2024 — April 2025',
-    title: 'Material Analysis & Bioengineering Research Intern · UBC BioProducts Institute',
+    period: 'May 2024 — Aug 2024',
+    title: 'Bioengineering Intern · UBC BioProducts Institute',
     summary:
-      'Engineered a sustainable artificial corneal stroma with 35% higher tensile strength and 1.1% improved optical clarity.',
-  },
-  {
-    period: 'Sept 2023 — June 2024',
-    title: 'Co-Lead, MindTap Project · UBC MINT',
-    summary:
-      'Led development of an EEG-based assistive headset enabling neural control of iOS devices, finalist at the 2024 Simon Cox Competition.',
+      'Building quantitative analysis pipelines in Python and R for tensile strength, optical transmission, and mechanical modeling; achieved 35% higher strength and 1.1% transparency improvement over baseline samples; presented research at the ACS Spring 2025 Conference (13,000+ attendees) and selected for the competitive Sci-Mix session for outstanding abstracts.',
   },
 ]
 
 const navLinks = [
   { href: '#experience', label: 'Experience' },
   { href: '#projects', label: 'Projects' },
+  { href: '#design', label: 'Design Team & Clubs' },
   { href: '#awards', label: 'Awards' },
   { href: '#contact', label: 'Contact' },
 ]
 
 const awards = [
+
+
   {
     year: '2026',
-    title: 'UBC Presidential Scholars Award',
-    detail: 'CAD 3,000/yr',
+    title: 'NwHacks 2026 - Best Health and Wellness Hack',
+    detail: 'CAD 750 Prize',
+  },
+
+  {
+    year: '2026',
+    title: 'NwHacks 2026 - Best Beginner Hack',
+    detail: 'CAD 750 Prize',
   },
   {
-    year: '2025',
+    year: '2023, 2024, 2025, 2026',
     title: 'UBC Presidential Scholars Award',
     detail: 'CAD 3,000/yr',
   },
+ 
   {
     year: '2024',
     title: 'UBC Faculty of Medicine Multidisciplinary Research Award',
     detail: 'CAD 11,500',
   },
-  {
-    year: '2024',
-    title: 'UBC Presidential Scholars Award',
-    detail: 'CAD 3,000/yr',
-  },
-  {
-    year: '2023',
-    title: 'UBC Presidential Scholars Award',
-    detail: 'CAD 3,000/yr',
-  },
+  
   {
     year: '2022',
     title: 'UBC International Major Entrance Scholarship',
@@ -249,13 +299,46 @@ const awards = [
   },
 ]
 
+const designClubs = [
+  {
+    period: 'Jun 2025 - Present · 11 mos',
+    role: 'Captain - Projects',
+    org: 'UBC BEST (Biomedical Engineering Student Team)',
+    bullets: [
+      'Led an interdisciplinary team of over 120 students to create innovative medtech solutions for diverse applications.',
+      'Represented UBC BEST at outreach events, enhancing connections within the biotech community.',
+      'Oversaw the planning and progress of six active projects, driving recruitment to support new initiatives.',
+    ],
+  },
+  {
+    period: 'Jan 2025 - Jun 2025 · 6 mos',
+    role: 'Co-Lead',
+    org: 'UBC Multifaceted Innovations In Neurotechnology',
+    bullets: [
+      'Co-led the development of a switch control-enabled EEG device system, coordinating mechanical, signal processing, and app development teams.',
+      'Managed project timelines and provided constructive feedback to ensure technical implementations met project goals.',
+      'Conducted stakeholder consultations with end-users, researchers, and industry partners to align the EEG system with user needs.',
+    ],
+  },
+  {
+    period: 'May 2023 - May 2024 · 1 yr',
+    role: 'Vice President External',
+    org: 'Engineers Without Borders UBC Chapter',
+    bullets: [
+      'Partnered with professionals and organizations to advocate sustainable engineering practices.',
+      'Led outreach and event organization of XChange Climate Conference 2024, which had more than 100 attendees.',
+    ],
+  },
+]
+
 const Section = ({ id, eyebrow, title, children }) => (
   <section id={id} className="section">
     <motion.div
       className="section-inner"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.35 }}
+      /* Mobile: lower threshold so sections reliably reveal during scroll/zoom. */
+      viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.65, ease: 'easeOut' }}
     >
       {eyebrow && <span className="eyebrow">{eyebrow}</span>}
@@ -347,7 +430,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
         <div className="project-modal-header">
           <div className="project-modal-meta">
             <span>{project.year}</span>
-            <span>Feature Project</span>
+            <span>{project.metaLabel || 'Project'}</span>
           </div>
           <h2 className="project-modal-title">{project.title}</h2>
         </div>
@@ -464,13 +547,40 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null)
+
+  const heroRef = useRef(null)
+
+  const handleHeroMouseMove = (e) => {
+    const el = heroRef.current
+    if (!el) return
+    const rect = el.getBoundingClientRect()
+    if (!rect.width || !rect.height) return
+
+    const px = ((e.clientX - rect.left) / rect.width) * 100
+    const py = ((e.clientY - rect.top) / rect.height) * 100
+    const clampedX = Math.max(0, Math.min(100, px))
+    const clampedY = Math.max(0, Math.min(100, py))
+
+    // Make the ocean movement noticeably responsive.
+    const dx = ((clampedX - 50) / 50) * 45
+    const dy = ((clampedY - 50) / 50) * 30
+    el.style.setProperty('--dx', `${dx.toFixed(2)}px`)
+    el.style.setProperty('--dy', `${dy.toFixed(2)}px`)
+    el.style.setProperty('--dx2', `${(dx * 0.45).toFixed(2)}px`)
+    el.style.setProperty('--dy2', `${(dy * 0.45).toFixed(2)}px`)
+  }
+
+  const handleHeroMouseLeave = () => {
+    const el = heroRef.current
+    if (!el) return
+    el.style.setProperty('--dx', '0px')
+    el.style.setProperty('--dy', '0px')
+    el.style.setProperty('--dx2', '0px')
+    el.style.setProperty('--dy2', '0px')
+  }
+
   return (
     <div className="app-shell">
-      <div 
-        className="newspaper-background" 
-        style={{ backgroundImage: `url(${newspaperBackground})` }}
-        aria-hidden="true" 
-      />
       <div className="noise-overlay" aria-hidden="true" />
       <div className="paper-aging" aria-hidden="true" />
       <div className="floating-glow floating-glow--one" aria-hidden="true" />
@@ -493,7 +603,15 @@ function App() {
           </div>
         </motion.nav>
 
-        <header className="hero" id="home">
+        <header
+          className="hero"
+          id="home"
+          ref={heroRef}
+          onPointerMove={handleHeroMouseMove}
+          onPointerLeave={handleHeroMouseLeave}
+        >
+          <div className="hero-waves" aria-hidden="true" />
+          <div className="hero-mountains" aria-hidden="true" />
           <div className="hero-layout">
             <motion.div
               className="hero-content"
@@ -507,7 +625,7 @@ function App() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: 'easeOut', delay: 0.35 }}
               >
-               Portfolio / 2025
+               Portfolio / 2026
               </motion.span>
 
               <motion.h1
@@ -519,7 +637,7 @@ function App() {
                 <Typewriter
                   texts={[
                     'Hello, I am Danish.',
-                    'I am a Fourth-Year Biomedical Engineering + CS student at UBC.',
+                    'I am a Fourth-Year Biomedical Engineering + Computer Science student at UBC.',
                     'Please, take a look at my projects and experience!',
                   ]}
                   typingSpeed={50}
@@ -545,7 +663,7 @@ function App() {
                 </a>
                 <a
                   className="btn btn-outline"
-                  href="/Danish_Resume (4).pdf"
+                  href="/Danish_Resume (12).pdf"
                   download
                 >
                   Download Resume
@@ -566,14 +684,14 @@ function App() {
 
         <Section
           id="experience"
-          eyebrow="Chronicle"
-          title="Experience Timeline"
+          title="Experience"
         >
           <motion.ol
             className="timeline"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.35 }}
+            /* Ensure timeline reveals even when the element is tall. */
+            viewport={{ once: true, amount: 0.15 }}
             variants={{
               hidden: { opacity: 0 },
               visible: {
@@ -603,7 +721,7 @@ function App() {
           </motion.ol>
         </Section>
 
-        <Section id="projects" eyebrow="Selected" title="Projects">
+        <Section id="projects"  title="Projects & Publications">
           <motion.div
             className="projects-grid"
             initial="hidden"
@@ -641,7 +759,7 @@ function App() {
                 </div>
                 <div className="project-meta">
                   <span>{project.year}</span>
-                  <span>Feature Project</span>
+                  <span>{project.metaLabel || 'Project'}</span>
                 </div>
                 <h3 className="project-title">{project.title}</h3>
                 <p className="project-description">{project.description}</p>
@@ -673,7 +791,7 @@ function App() {
           </motion.div>
         </Section>
 
-        <Section id="awards" eyebrow="Notices" title="Awards & Scholarships">
+        <Section id="awards"  title="Awards & Scholarships">
           <motion.ul
             className="awards-grid"
             initial="hidden"
@@ -704,9 +822,44 @@ function App() {
           </motion.ul>
         </Section>
 
+        <Section id="design" title="Design Team & Clubs">
+          <motion.ul
+            className="awards-grid"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.35 }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.1 } },
+            }}
+          >
+            {designClubs.map((item) => (
+              <motion.li
+                key={item.org}
+                className="award-card"
+                variants={{
+                  hidden: { opacity: 0, y: 24 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+              >
+                <div className="award-meta">
+                  <span className="award-year">{item.period}</span>
+                </div>
+                <h3 className="award-title">{item.org}</h3>
+                <p className="club-role">{item.role}</p>
+                <ul className="club-bullets">
+                  {item.bullets.map((b) => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
+              </motion.li>
+            ))}
+          </motion.ul>
+        </Section>
+
         <Section
           id="contact"
-          eyebrow="Collaborate"
           title="Contact Me"
         >
           <motion.div
